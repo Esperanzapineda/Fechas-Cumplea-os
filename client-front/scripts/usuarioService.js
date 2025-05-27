@@ -1,35 +1,21 @@
-function usuarioService(data){
-    const contenedorTargetas = document.getElementById("calendario");
+const axios = require ("axios");
 
-    contenedorTargetas.innerHTML = ""; //limpiar el formulario antes si es necesario
+const API_URL = "http://localhost:3000/users";
 
-    data.forEach(tarjeta => {
-        const card = document.createElement("div");
-        card.classList.add("card");
+async function obtenerUsuarios() {
+    const respuesta = await axios.get(API_URL);
+    return respuesta.data;
+}
 
-        const nombre = document.createElement("h3");
-        nombre.textContent = tarjeta.nombre;
+async function eliminarUsuario(id) {
+    return axios.delete(`${API_URL}/${id}`);
+}
 
-        const apellido = document.createElement("h3");
-        apellido.textContent = tarjeta.apellido;
+// export async function actualizarUsuario(id, usuarioActualizado) {
+//     return axios.put(`${API_URL}/${id}, usuarioActualizado);
+// }
 
-        const foto = document.createElement("img");
-        foto.src = tarjeta.foto;
-
-        const fechaNacimiento = document.createElement("p");
-        fechaNacimiento.textContent = tarjeta.fechaNacimiento.slice(0,10);
-
-        const sexo = document.createElement("p");
-        sexo.textContent = tarjeta.sexo;
-
-        //Se agrega todo a la tarjeta
-
-        card.append(nombre, apellido, foto, fechaNacimiento, sexo);
-
-        //se aañade todo al contenedor
-        contenedorTargetas.appendChild(card);
-
-    });
-};
-
-module.exports = usuarioService;
+module.exports = {
+    obtenerUsuarios,
+    eliminarUsuario
+}

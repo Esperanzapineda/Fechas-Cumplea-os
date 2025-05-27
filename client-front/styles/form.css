@@ -76,7 +76,7 @@ button {
     transition: background-color 0.3s;
 }
 
-#crear {
+#crear, #btn-eliminar{
     background-color: #007bff;
 }
 

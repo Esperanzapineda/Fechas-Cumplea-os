@@ -49,7 +49,7 @@ button {
     transition: background-color 0.3s;
 }
 
-.crear {
+.crear, .eliminar {
   background-color: #007bff;
   border-radius: 25px;
   padding: 10px 15px;

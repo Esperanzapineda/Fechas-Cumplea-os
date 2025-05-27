@@ -1,5 +1,6 @@
-const usuarioService = require("./usuarioService");
+const usuarioService = require("./renderCards");
 const envioFormulario = require("./formulario");
+const inicioEliminarUsuario = require("./eliminarUsuario");
 const axios = require("axios");
 const url = "http://localhost:3000/users/ordenados/fecha";
 
@@ -16,4 +17,8 @@ document.addEventListener("DOMContentLoaded", async() => {
         formulario.addEventListener("submit", envioFormulario);
     }
 
+    const btnEliminar = document.getElementById("btn-eliminar");
+    if(btnEliminar){
+        inicioEliminarUsuario();
+    }
 });
